@@ -337,9 +337,22 @@ section[id] {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
   gap: 34px;
   align-items: stretch;
+}
+
+.hero__copy,
+.hero__media,
+.section-head > div,
+.section-head__note,
+.story__panel,
+.media-card,
+.media-tile,
+.ecosystem-card,
+.catalog__copy,
+.catalog__actions {
+  min-width: 0;
 }
 
 .eyebrow {
@@ -360,9 +373,13 @@ section[id] {
 }
 
 .hero h1 {
-  max-width: 11ch;
-  font-size: clamp(3.4rem, 7vw, 7rem);
-  line-height: 0.92;
+  max-width: 12ch;
+  font-size: clamp(2.9rem, 5.2vw, 5.3rem);
+  line-height: 0.94;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .hero__lede,
@@ -600,7 +617,7 @@ section[id] {
 
 .section-head {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
   gap: 28px;
   align-items: end;
   margin-bottom: 28px;
@@ -608,8 +625,12 @@ section[id] {
 
 .section-head h2 {
   max-width: 12ch;
-  font-size: clamp(2.8rem, 5vw, 5rem);
-  line-height: 0.98;
+  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+  line-height: 1;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .section-head__note {
