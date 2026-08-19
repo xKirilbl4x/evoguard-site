@@ -61,6 +61,10 @@ const lineButtons = document.querySelectorAll(".line-pill");
 const ecosystemCard = document.getElementById("ecosystem-card");
 const progressBar = document.querySelector(".progress-line__bar");
 const revealNodes = document.querySelectorAll(".reveal");
+const topbar = document.querySelector(".topbar");
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+const mobileMenuLinks = document.querySelectorAll(".mobile-menu a");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!reduceMotion) {
@@ -143,3 +147,48 @@ function updateProgress() {
 updateProgress();
 window.addEventListener("scroll", updateProgress, { passive: true });
 window.addEventListener("resize", updateProgress);
+
+function setMobileMenuState(isOpen) {
+  if (!topbar || !menuToggle) {
+    return;
+  }
+
+  topbar.classList.toggle("menu-open", isOpen);
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+}
+
+if (topbar && menuToggle && mobileMenu) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = topbar.classList.contains("menu-open");
+    setMobileMenuState(!isOpen);
+  });
+
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      setMobileMenuState(false);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!topbar.classList.contains("menu-open")) {
+      return;
+    }
+
+    if (event.target instanceof Node && !topbar.contains(event.target)) {
+      setMobileMenuState(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileMenuState(false);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 640) {
+      setMobileMenuState(false);
+    }
+  });
+}
