@@ -373,12 +373,12 @@ section[id] {
 }
 
 .hero h1 {
-  max-width: 12ch;
-  font-size: clamp(2.9rem, 5.2vw, 5.3rem);
-  line-height: 0.94;
-  overflow-wrap: break-word;
+  max-width: 15ch;
+  font-size: clamp(2.5rem, 4.8vw, 5.1rem);
+  line-height: 0.97;
+  overflow-wrap: normal;
   word-break: normal;
-  hyphens: auto;
+  hyphens: none;
   text-wrap: balance;
 }
 
@@ -397,7 +397,7 @@ section[id] {
 }
 
 .hero__lede {
-  max-width: 60ch;
+  max-width: 56ch;
   margin: 22px 0 0;
 }
 
@@ -624,12 +624,12 @@ section[id] {
 }
 
 .section-head h2 {
-  max-width: 12ch;
-  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
-  line-height: 1;
-  overflow-wrap: break-word;
+  max-width: 14ch;
+  font-size: clamp(2.2rem, 3.9vw, 4.1rem);
+  line-height: 0.98;
+  overflow-wrap: normal;
   word-break: normal;
-  hyphens: auto;
+  hyphens: none;
   text-wrap: balance;
 }
 
@@ -999,6 +999,7 @@ section[id] {
     grid-template-columns: minmax(0, 1fr) 240px;
   }
 
+  .hero h1,
   .section-head h2,
   .catalog__copy h2 {
     max-width: none;
@@ -1018,12 +1019,15 @@ section[id] {
 
   .topnav {
     grid-column: 1 / -1;
-    justify-content: space-between;
-    gap: 12px 18px;
+    grid-row: 2;
+    justify-content: flex-start;
+    gap: 12px 22px;
     flex-wrap: wrap;
   }
 
   .topbar__cta {
+    grid-column: 2;
+    grid-row: 1;
     justify-self: end;
   }
 
@@ -1039,6 +1043,15 @@ section[id] {
   .hero__media,
   .ecosystem__layout {
     grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.6rem);
+  }
+
+  .section-head h2,
+  .catalog__copy h2 {
+    font-size: clamp(2.1rem, 4.4vw, 3.2rem);
   }
 
   .film-card {
